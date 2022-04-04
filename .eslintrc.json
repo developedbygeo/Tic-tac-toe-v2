@@ -31,6 +31,7 @@
     ],
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "no-unused-vars": "warn",
+    "no-param-reassign": "off",
     "react/jsx-no-bind": "off"
   }
 }
