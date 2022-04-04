@@ -1,8 +1,12 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { init } from '../features/game/gameSlice';
 
 import { ReactComponent as Logo } from '../assets/logo.svg';
+import { Card } from '../components/UI/Card';
+import MenuSelect from '../components/MenuSelect';
 import CustomButton from '../components/UI/Buttons';
-import Card from '../components/UI/Card';
 
 const marks = [
   { mark: 'X', key: 1 },
@@ -12,10 +16,26 @@ const marks = [
 // TODO: refactor into smaller components
 
 const Menu = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [selectedMark, setSelectedMark] = useState('X');
+  const player2Mark = marks.find((mark) => mark.mark !== selectedMark).mark;
 
   const markSelectionHandler = (mark) => {
     setSelectedMark(mark);
+  };
+
+  const startGameHandler = (mode) => {
+    dispatch(
+      init({
+        mode,
+        players: [
+          { mark: selectedMark, id: 'P1' },
+          { mark: player2Mark, id: 'P2' }
+        ]
+      })
+    );
+    navigate('/game');
   };
 
   return (
@@ -23,38 +43,27 @@ const Menu = () => {
       <div className="py-2">
         <Logo />
       </div>
-      <section className="custom-card bg-semi-dark-navy h-3/6 w-full rounded-lg flex flex-col justify-between items-center py-4 text-custom-silver">
+      <Card className="h-3/6 w-full flex flex-col justify-between items-center py-4 text-custom-silver">
         <h1 className="font-bold uppercase tracking-wider">pick player 1&apos;s mark</h1>
-        <div className="p-4 grid grid-cols-2 gap-1 w-3/4 bg-dark-navy rounded-md">
-          {marks.map((markObj) => (
-            <CustomButton
-              key={markObj.key}
-              onClick={markSelectionHandler.bind(null, markObj.mark)}
-              title={`Select ${markObj.mark}`}
-              className={`text-2xl font-bold py-2 px-1 rounded-md ${
-                selectedMark === markObj.mark
-                  ? 'bg-custom-silver text-dark-navy'
-                  : 'text-custom-silver hover:bg-semi-dark-navy bg-opacity-25'
-              }`}
-            >
-              {markObj.mark}
-            </CustomButton>
-          ))}
-        </div>
+        <MenuSelect onMarkSelect={markSelectionHandler} selected={selectedMark} />
         <h2 className="font-normal uppercase tracking-wide text-sm opacity-50">
           Remember: x goes first
         </h2>
-      </section>
+      </Card>
       <div className="flex flex-col gap-5 w-full">
         <CustomButton
           title="Play against the computer"
-          className="btn-primary-one bg-light-yellow  w-full"
+          type="primary"
+          size="lg"
+          onClick={() => startGameHandler('CPU')}
         >
           New Game (VS CPU)
         </CustomButton>
         <CustomButton
           title="Play against a friend"
-          className="btn-primary-two bg-light-blue w-full"
+          type="secondary"
+          size="lg"
+          onClick={() => startGameHandler('P2')}
         >
           New Game (VS Player)
         </CustomButton>
