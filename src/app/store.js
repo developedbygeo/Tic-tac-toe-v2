@@ -1,8 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import gameReducer from '../features/game/gameSlice';
+import uiReducer from '../features/ui/uiSlice';
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
-    counter: counterReducer,
-  },
+    game: gameReducer,
+    ui: uiReducer
+  }
 });
+
+export default store;
