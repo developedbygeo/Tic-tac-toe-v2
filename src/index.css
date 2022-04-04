@@ -11,15 +11,6 @@
   .btn {
     @apply text-center text-dark-navy tracking-wide font-bold rounded-lg transition ease-in-out delay-100;
   }
-  .btn-primary-one {
-    @apply px-8 py-3 shadow-primaryButtonOne hover:bg-light-yellow-hover active:shadow-primaryButtonOneActive;
-  }
-  .btn-primary-two {
-    @apply px-8 py-3 shadow-primaryButtonTwo hover:bg-light-blue-hover active:shadow-primaryButtonTwoActive;
-  }
-  .btn-secondary {
-    @apply shadow-secondaryButton;
-  }
   .custom-card {
     @apply text-center rounded-lg bg-semi-dark-navy shadow-cardShadow;
   }
