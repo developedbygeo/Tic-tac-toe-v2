@@ -8,7 +8,7 @@ const MenuSelect = ({ onMarkSelect, selected }) => {
     <div className="p-1 grid grid-cols-2 gap-1 w-3/4 bg-dark-navy rounded-md">
       {SELECTION_MARKS.map((markObj) => (
         <CustomButton
-          key={markObj.mark}
+          key={markObj.id}
           onClick={() => onMarkSelect(markObj.mark)}
           title={`Select ${markObj.mark}`}
           className={`text-3xl font-bold py-2 px-1 rounded-md duration-75 ${
