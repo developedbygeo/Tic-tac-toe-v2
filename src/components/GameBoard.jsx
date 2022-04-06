@@ -1,20 +1,16 @@
 /* eslint-disable react/no-array-index-key */
-
 /** @jsxImportSource @emotion/react */
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { css } from '@emotion/react';
-import { useEffect } from 'react';
 
-import { play } from '../features/game/gameSlice';
+import useMinmax from '../hooks/useMinmax';
+import usePlayer from '../hooks/usePlayer';
+
 import { TicButton } from './UI/Buttons';
 
-import outlineX from '../assets/icon-x-outline.svg';
-import outlineO from '../assets/icon-o-outline.svg';
 import { ReactComponent as MarkX } from '../assets/icon-x.svg';
 import { ReactComponent as MarkO } from '../assets/icon-o.svg';
-
-import { averageCpu } from '../utils/utilFns';
 
 const style = (svg, condition) => css`
   ${condition === true &&
@@ -31,34 +27,11 @@ const lookup = {
   '': ''
 };
 
-// TODO clean up and add a conditional hover helper fn
-
 const GameBoard = () => {
-  const dispatch = useDispatch();
-  const { board, currentTurn, mode, players, currentRoundWinner } = useSelector(
-    (state) => state.game
-  );
-  const hoverMark = currentTurn === 'X' ? outlineX : outlineO;
-
-  const playerMoveHandler = (index) => {
-    if (mode === 'CPU' && currentTurn === players[0].mark) {
-      const { mark } = players[0];
-      dispatch(play({ position: index, mark }));
-    }
-    if (mode !== 'CPU') {
-      dispatch(play({ position: index, mark: currentTurn }));
-    }
-  };
-
-  useEffect(() => {
-    if (mode === 'CPU' && currentTurn !== players[0].mark && !currentRoundWinner) {
-      const selection = averageCpu(board, players[1].mark);
-      const timer = setTimeout(() => {
-        dispatch(play({ position: selection, mark: players[1].mark }));
-      }, 1000);
-      return () => clearTimeout(timer);
-    }
-  }, [mode, players, currentTurn, board, currentRoundWinner, dispatch]);
+  const { board, mode } = useSelector((state) => state.game);
+  const hoverMarkCPU = useMinmax();
+  const [playerMoveHandler, currentHover] = usePlayer();
+  const hoverMark = mode === 'CPU' ? hoverMarkCPU : currentHover;
 
   return (
     <div className="h-3/5 grid grid-cols-3 grid-rows-3 place-items-center gap-6">
