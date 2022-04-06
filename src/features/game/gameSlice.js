@@ -13,7 +13,7 @@ const initialState = {
     { player1: MARKS.X, id: null },
     { player2: MARKS.O, id: null }
   ],
-  currentRoundWinner: null,
+  finalState: null,
   currentWinningCoords: null,
   winsX: 0,
   winsO: 0,
@@ -38,7 +38,7 @@ export const gameSlice = createSlice({
       state.currentTurn = mark === MARKS.X ? MARKS.O : MARKS.X;
       const isWinner = checkBoardStatus(state.board, mark);
       if (isWinner) {
-        state.currentRoundWinner = mark;
+        state.finalState = mark;
         state.currentWinningCoords = [position];
         if (mark === MARKS.X) {
           state.winsX += 1;
@@ -47,6 +47,10 @@ export const gameSlice = createSlice({
         }
       }
       state.round += 1;
+      if (state.round === 9 && !isWinner) {
+        state.finalState = 'tie';
+        state.ties += 1;
+      }
     },
     reset: () => initialState
   }
