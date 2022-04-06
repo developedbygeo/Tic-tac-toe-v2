@@ -1,5 +1,13 @@
 import { v4 as uuidv4 } from 'uuid';
 
+import outlineX from '../assets/icon-x-outline.svg';
+import outlineO from '../assets/icon-o-outline.svg';
+
+export const hoverLookup = {
+  X: outlineX,
+  O: outlineO
+};
+
 export const MARKS = {
   X: 'X',
   O: 'O'
