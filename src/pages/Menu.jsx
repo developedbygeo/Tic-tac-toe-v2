@@ -25,13 +25,13 @@ const Menu = () => {
     setSelectedMark(mark);
   };
 
-  const startGameHandler = (mode) => {
+  const startGameHandler = (mode = 'CPU') => {
     dispatch(
       init({
         mode,
         players: [
           { mark: selectedMark, id: 'P1' },
-          { mark: player2Mark, id: 'P2' }
+          { mark: player2Mark, id: mode === 'CPU' ? 'CPU' : 'P2' }
         ]
       })
     );
