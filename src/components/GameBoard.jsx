@@ -7,7 +7,7 @@ import { css } from '@emotion/react';
 import { useEffect } from 'react';
 
 import { play } from '../features/game/gameSlice';
-import { TicButton } from './UI/Card';
+import { TicButton } from './UI/Buttons';
 
 import outlineX from '../assets/icon-x-outline.svg';
 import outlineO from '../assets/icon-o-outline.svg';
