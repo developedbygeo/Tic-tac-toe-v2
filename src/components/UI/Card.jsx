@@ -2,13 +2,19 @@ import PropTypes from 'prop-types';
 
 import { ScoreCardType } from '../../theme';
 
-export const Card = ({ children, className }) => (
+export const Card = ({ children, className, onMove }) => (
   <div className={`custom-card  ${className || ''}`}>{children}</div>
 );
 
 Card.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string.isRequired
+  children: PropTypes.node,
+  className: PropTypes.string.isRequired,
+  onMove: PropTypes.func
+};
+
+Card.defaultProps = {
+  children: null,
+  onMove: null
 };
 
 export const ScoreCard = ({ title, score, type, className }) => (
