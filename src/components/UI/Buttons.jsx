@@ -29,3 +29,15 @@ CustomButton.defaultProps = {
 };
 
 export default CustomButton;
+
+export const TicButton = ({ children, className, onMove }) => (
+  <button type="button" className={`custom-card ${className || ''}`} onClick={onMove}>
+    {children}
+  </button>
+);
+
+TicButton.propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string.isRequired,
+  onMove: PropTypes.func.isRequired
+};
