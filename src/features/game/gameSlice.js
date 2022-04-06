@@ -1,7 +1,7 @@
 /* eslint-disable consistent-return */
 import { createSlice } from '@reduxjs/toolkit';
 
-import { MARKS, PLAYERS } from '../../utils/constants';
+import { MARKS } from '../../utils/constants';
 import { checkBoardStatus } from '../../utils/utilFns';
 
 const initialState = {
@@ -29,17 +29,17 @@ export const gameSlice = createSlice({
       state.mode = mode;
       state.players = players;
       state.round = 0;
-      state.winner = null;
     },
     play: (state, action) => {
-      const { row, col, mark } = action.payload;
-      if (state.map[row][col] !== '') return false;
+      const { position, mark } = action.payload;
+      if (state.board[position] !== '') return;
       // TODO handle error in component by calling the ui slice
-      state.map[row][col] = mark;
-      const isWinner = checkBoardStatus(state.map, mark);
+      state.board[position] = mark;
+      state.currentTurn = mark === MARKS.X ? MARKS.O : MARKS.X;
+      const isWinner = checkBoardStatus(state.board, mark);
       if (isWinner) {
         state.currentRoundWinner = mark;
-        state.currentWinningCoords = [row, col];
+        state.currentWinningCoords = [position];
         if (mark === MARKS.X) {
           state.winsX += 1;
         } else {
