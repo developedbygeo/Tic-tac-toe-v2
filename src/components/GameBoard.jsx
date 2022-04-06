@@ -15,6 +15,7 @@ import { ReactComponent as MarkO } from '../assets/icon-o.svg';
 const style = (svg, condition) => css`
   ${condition === true &&
   `
+    transition: 50ms ease;
     &:hover{
     background-image: url(${svg});
   }
