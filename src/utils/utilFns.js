@@ -10,33 +10,39 @@ const isBoardFull = (board) => {
   return board.every((mark) => mark !== '');
 };
 
-const getEmptyIndices = (board) => board.filter((el) => el === '');
+const minimax = (board, cpuMark, humanMark, isMax) => {
+  let optimalRes = isMax ? -10000 : 10000;
 
-export const averageCpu = (board, mark) => {
-  const opponentMark = mark === 'X' ? 'O' : 'X';
-  const cpuBoard = [...board];
-  const cpuIndex = getEmptyIndices(cpuBoard);
-  cpuBoard[cpuIndex] = mark;
+  if (checkBoardStatus(board, cpuMark)) return 10;
+  if (checkBoardStatus(board, humanMark)) return -10;
+  if (isBoardFull(board)) return 0;
 
-  if (checkBoardStatus(cpuBoard, mark)) return { move: cpuIndex, score: 10 };
-  if (checkBoardStatus(cpuBoard, opponentMark)) return { move: cpuIndex, score: -10 };
-  if (isBoardFull(cpuBoard)) return { move: cpuIndex, score: 0 };
+  for (let i = 0; i < board.length; i += 1) {
+    if (board[i] === '') {
+      board[i] = isMax ? cpuMark : humanMark;
+      const result = minimax(board, cpuMark, humanMark, !isMax);
+      board[i] = '';
+      optimalRes = isMax ? Math.max(result, optimalRes) : Math.min(result, optimalRes);
+    }
+  }
+  return optimalRes;
+};
 
-  let bestMove;
-  let bestScore;
-
-  for (let i = 0; i < cpuBoard.length; i += 1) {
-    if (cpuBoard[i] === '') {
-      cpuBoard[i] = mark;
-      const score = averageCpu(cpuBoard, mark);
-      cpuBoard[i] = '';
-
-      if (bestScore === undefined || score > bestScore) {
-        bestScore = score;
-        bestMove = i;
+export const optimalPlay = (board, cpuMark) => {
+  const boardCopy = [...board];
+  const opponentMark = cpuMark === 'X' ? 'O' : 'X';
+  let bestScore = -10000;
+  let move;
+  for (let i = 0; i < boardCopy.length; i += 1) {
+    if (boardCopy[i] === '') {
+      boardCopy[i] = cpuMark;
+      const score = minimax(boardCopy, cpuMark, opponentMark, false);
+      boardCopy[i] = '';
+      bestScore = Math.max(score, bestScore);
+      if (bestScore === score) {
+        move = i;
       }
     }
   }
-
-  return bestMove;
+  return move;
 };
