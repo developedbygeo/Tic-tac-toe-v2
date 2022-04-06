@@ -10,12 +10,6 @@ export const SELECTION_MARKS = [
   { mark: 'O', id: uuidv4() }
 ];
 
-export const PLAYERS = {
-  CPU: 'CPU',
-  P1: 'P1',
-  P2: 'P2'
-};
-
 export const WINNING_COMBOS = [
   [0, 1, 2],
   [3, 4, 5],
