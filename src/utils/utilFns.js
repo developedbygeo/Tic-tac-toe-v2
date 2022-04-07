@@ -1,7 +1,7 @@
-import { WINNING_COMBOS } from './constants';
+import { winningCombosLookup } from './constants';
 
 export const checkBoardStatus = (board, mark) => {
-  return WINNING_COMBOS.some((combination) => {
+  return winningCombosLookup.some((combination) => {
     return combination.every((index) => board[index] === mark);
   });
 };
