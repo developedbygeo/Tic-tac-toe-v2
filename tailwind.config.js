@@ -12,7 +12,8 @@ module.exports = {
       'light-blue': '#31C3BD',
       'light-blue-hover': '#65E9E4',
       'light-yellow': '#F2B137',
-      'light-yellow-hover': '#FFC860'
+      'light-yellow-hover': '#FFC860',
+      black: '#000000'
     },
     extend: {
       fontFamily: {
