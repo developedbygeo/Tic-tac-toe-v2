@@ -33,6 +33,7 @@
     "no-unused-vars": "warn",
     "no-param-reassign": "off",
     "react/jsx-no-bind": "off",
-    "consistent-return": "off"
+    "consistent-return": "off",
+    "react/jsx-filename-extension": "warn"
   }
 }
