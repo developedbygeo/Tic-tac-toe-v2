@@ -9,8 +9,7 @@ import usePlayer from '../hooks/usePlayer';
 
 import { TicButton } from './UI/Buttons';
 
-import { ReactComponent as MarkX } from '../assets/icon-x.svg';
-import { ReactComponent as MarkO } from '../assets/icon-o.svg';
+import { svgLookup } from '../utils/constants';
 
 const style = (svg, condition) => css`
   ${condition === true &&
@@ -21,12 +20,6 @@ const style = (svg, condition) => css`
   }
   `}
 `;
-
-const lookup = {
-  X: <MarkX />,
-  O: <MarkO />,
-  '': ''
-};
 
 const GameBoard = () => {
   const { board, mode } = useSelector((state) => state.game);
@@ -44,7 +37,7 @@ const GameBoard = () => {
             className="w-full h-full cursor-pointer bg-contain bg-no-repeat bg-center flex items-center justify-center"
             css={style(hoverMark, !card)}
           >
-            {lookup[card]}
+            {svgLookup[card]}
           </TicButton>
         );
       })}
