@@ -1,19 +1,19 @@
-/* eslint-disable consistent-return */
 import { createSlice } from '@reduxjs/toolkit';
 
-import { MARKS } from '../../utils/constants';
+import { marksLookup } from '../../utils/constants';
 import { checkBoardStatus } from '../../utils/utilFns';
 
 const initialState = {
   round: null,
   mode: null,
   board: [...Array(9).fill('')],
-  currentTurn: MARKS.X,
+  currentTurn: marksLookup.X,
   players: [
-    { player1: MARKS.X, id: null },
-    { player2: MARKS.O, id: null }
+    { player1: marksLookup.X, id: null },
+    { player2: marksLookup.O, id: null }
   ],
   finalState: null,
+  winner: null,
   currentWinningCoords: null,
   winsX: 0,
   winsO: 0,
@@ -33,14 +33,14 @@ export const gameSlice = createSlice({
     play: (state, action) => {
       const { position, mark } = action.payload;
       if (state.board[position] !== '') return;
-      // TODO handle error in component by calling the ui slice
       state.board[position] = mark;
-      state.currentTurn = mark === MARKS.X ? MARKS.O : MARKS.X;
+      state.currentTurn = mark === marksLookup.X ? marksLookup.O : marksLookup.X;
       const isWinner = checkBoardStatus(state.board, mark);
       if (isWinner) {
-        state.finalState = mark;
+        state.finalState = 'WON';
+        state.winner = mark;
         state.currentWinningCoords = [position];
-        if (mark === MARKS.X) {
+        if (mark === marksLookup.X) {
           state.winsX += 1;
         } else {
           state.winsO += 1;
@@ -48,13 +48,19 @@ export const gameSlice = createSlice({
       }
       state.round += 1;
       if (state.round === 9 && !isWinner) {
-        state.finalState = 'tie';
+        state.finalState = 'TIE';
         state.ties += 1;
       }
     },
-    reset: () => initialState
+    restart: (state) => {
+      state.board = initialState.board;
+      state.currentTurn = 'X';
+      state.round = 0;
+      state.finalState = null;
+      state.winner = null;
+    }
   }
 });
 
-export const { init, play, reset } = gameSlice.actions;
+export const { init, play, restart } = gameSlice.actions;
 export default gameSlice.reducer;
