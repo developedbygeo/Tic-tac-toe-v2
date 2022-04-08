@@ -52,15 +52,16 @@ export const gameSlice = createSlice({
         state.ties += 1;
       }
     },
-    restart: (state) => {
+    restartRound: (state) => {
       state.board = initialState.board;
       state.currentTurn = 'X';
       state.round = 0;
       state.finalState = null;
       state.winner = null;
-    }
+    },
+    quit: () => initialState
   }
 });
 
-export const { init, play, restart } = gameSlice.actions;
+export const { init, play, restartRound, quit } = gameSlice.actions;
 export default gameSlice.reducer;
