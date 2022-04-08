@@ -5,7 +5,7 @@ import { css } from '@emotion/react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { restart, quit } from '../features/game/gameSlice';
+import { restartRound as nextRound, quit } from '../features/game/gameSlice';
 
 import CustomButton from './UI/Buttons';
 import { svgLookup, winnerColorLookup } from '../utils/constants';
@@ -32,7 +32,7 @@ const GameOverDialogue = ({ onDisable }) => {
   };
 
   const nextRoundHandler = () => {
-    dispatch(restart());
+    dispatch(nextRound());
     onDisable();
   };
 
