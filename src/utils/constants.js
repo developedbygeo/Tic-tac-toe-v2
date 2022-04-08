@@ -12,9 +12,14 @@ export const hoverLookup = {
 };
 
 export const svgLookup = {
-  X: <MarkX />,
-  O: <MarkO />,
+  X: <MarkX fill="#31C3BD" />,
+  O: <MarkO fill="#F2B137" />,
   '': ''
+};
+
+export const svgWinLookup = {
+  X: <MarkX fill="#1a2a33" />,
+  O: <MarkO fill="#1a2a33" />
 };
 
 export const marksLookup = {
