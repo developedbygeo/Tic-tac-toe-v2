@@ -18,11 +18,9 @@ const GameHeader = () => {
   const finalStateText = finalState && winner ? `${winner} ${finalState}` : `${finalState}`;
   const turnText = `${currentTurn}`;
 
-  const handleQuit = () => setShowModal((prevState) => !prevState);
+  const handleQuitModal = () => setShowModal((prevState) => !prevState);
 
-  const handleRestart = () => {
-    setRestartModal((prevState) => !prevState);
-  };
+  const handleRestartModal = () => setRestartModal((prevState) => !prevState);
 
   useEffect(() => {
     if (finalState) {
@@ -42,18 +40,23 @@ const GameHeader = () => {
           </span>
           <span>{!finalState && 'TURN'}</span>
         </Card>
-        <CustomButton onClick={handleRestart} title="Restart game" type="basic" className="p-3">
+        <CustomButton
+          onClick={handleRestartModal}
+          title="Restart game"
+          type="basic"
+          className="p-3"
+        >
           <Restart />
         </CustomButton>
       </div>
       {finalState && showModal && (
         <Modal>
-          <GameOverDialogue onDisable={handleQuit} />
+          <GameOverDialogue onDisable={handleQuitModal} />
         </Modal>
       )}
       {restartModal && (
-        <Modal onDisable={handleRestart}>
-          <GameRestartDialogue onDisable={handleRestart} />
+        <Modal onDisable={handleRestartModal}>
+          <GameRestartDialogue onDisable={handleRestartModal} />
         </Modal>
       )}
     </>
