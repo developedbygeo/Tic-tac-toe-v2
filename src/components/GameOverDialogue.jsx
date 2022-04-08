@@ -2,9 +2,10 @@
 
 import { useSelector, useDispatch } from 'react-redux';
 import { css } from '@emotion/react';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { restart } from '../features/game/gameSlice';
+import { restart, quit } from '../features/game/gameSlice';
 
 import CustomButton from './UI/Buttons';
 import { svgLookup, winnerColorLookup } from '../utils/constants';
@@ -21,7 +22,14 @@ const svgStyle = css`
 
 const GameOverDialogue = ({ onDisable }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { mode, players, winner, finalState } = useSelector((state) => state.game);
+
+  const quitHandler = () => {
+    onDisable();
+    dispatch(quit());
+    navigate('/');
+  };
 
   const nextRoundHandler = () => {
     dispatch(restart());
@@ -50,7 +58,7 @@ const GameOverDialogue = ({ onDisable }) => {
       </div>
       <div className="flex flex-row gap-3">
         <CustomButton
-          onClick={onDisable}
+          onClick={quitHandler}
           title="Quit the game"
           className="text-center py-2"
           type="basic"
