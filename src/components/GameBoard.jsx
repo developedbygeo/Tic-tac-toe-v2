@@ -9,20 +9,27 @@ import usePlayer from '../hooks/usePlayer';
 
 import { TicButton } from './UI/Buttons';
 
-import { svgLookup } from '../utils/constants';
+import { svgLookup, svgWinLookup, winnerColorLookup } from '../utils/constants';
 
-const style = (svg, condition) => css`
-  ${condition === true &&
+const style = (svg, isMarkPlaced, hasPlayerWon, winner) => css`
+  ${isMarkPlaced === true &&
   `
     transition: 50ms ease;
     &:hover{
     background-image: url(${svg});
   }
   `}
+  ${hasPlayerWon === true &&
+  `
+  background-color: ${winnerColorLookup[winner]};
+  svg{
+
+  }
+  `}
 `;
 
 const GameBoard = () => {
-  const { board, mode } = useSelector((state) => state.game);
+  const { board, mode, winner, currentWinningCoords } = useSelector((state) => state.game);
   const hoverMarkCPU = useMinmax();
   const [playerMoveHandler, currentHover] = usePlayer();
   const hoverMark = mode === 'CPU' ? hoverMarkCPU : currentHover;
@@ -30,14 +37,15 @@ const GameBoard = () => {
   return (
     <div className="h-3/5 grid grid-cols-3 grid-rows-3 place-items-center gap-6">
       {board.map((card, index) => {
+        const isWinningCoord = currentWinningCoords && currentWinningCoords.includes(index);
         return (
           <TicButton
             key={index}
             onMove={() => playerMoveHandler(index)}
             className="w-full h-full cursor-pointer bg-contain bg-no-repeat bg-center flex items-center justify-center"
-            css={style(hoverMark, !card)}
+            css={style(hoverMark, !card, isWinningCoord, winner)}
           >
-            {svgLookup[card]}
+            {isWinningCoord ? svgWinLookup[card] : svgLookup[card]}
           </TicButton>
         );
       })}
