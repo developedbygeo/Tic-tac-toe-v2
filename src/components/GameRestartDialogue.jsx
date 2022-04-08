@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { restart } from '../features/game/gameSlice';
+import { restartRound } from '../features/game/gameSlice';
 
 import CustomButton from './UI/Buttons';
 
@@ -9,7 +9,7 @@ const GameRestartDialogue = ({ onDisable }) => {
   const dispatch = useDispatch();
 
   const restartGameHandler = () => {
-    dispatch(restart());
+    dispatch(restartRound());
     onDisable();
   };
 
