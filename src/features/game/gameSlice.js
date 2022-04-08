@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { marksLookup } from '../../utils/constants';
-import { checkBoardStatus } from '../../utils/utilFns';
+import { checkBoardStatus, findWinningCoords } from '../../utils/utilFns';
 
 const initialState = {
   round: null,
@@ -39,7 +39,7 @@ export const gameSlice = createSlice({
       if (isWinner) {
         state.finalState = 'WON';
         state.winner = mark;
-        state.currentWinningCoords = [position];
+        state.currentWinningCoords = findWinningCoords(state.board, mark);
         if (mark === marksLookup.X) {
           state.winsX += 1;
         } else {
@@ -55,6 +55,7 @@ export const gameSlice = createSlice({
     restartRound: (state) => {
       state.board = initialState.board;
       state.currentTurn = 'X';
+      state.currentWinningCoords = null;
       state.round = 0;
       state.finalState = null;
       state.winner = null;
