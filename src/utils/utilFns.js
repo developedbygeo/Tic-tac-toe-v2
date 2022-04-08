@@ -6,6 +6,12 @@ export const checkBoardStatus = (board, mark) => {
   });
 };
 
+export const findWinningCoords = (board, mark) => {
+  return winningCombosLookup.find((combination) => {
+    return combination.every((index) => board[index] === mark);
+  });
+};
+
 const isBoardFull = (board) => {
   return board.every((mark) => mark !== '');
 };
