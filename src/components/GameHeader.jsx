@@ -37,11 +37,13 @@ const GameHeader = () => {
         <Link to="/">
           <Logo />
         </Link>
-        <Card className="px-4 py-2 text-custom-silver font-bold flex flex-row gap-1 items-center justify-center text-center md:px-10 md:py-3">
+        <Card className="px-4 py-2 text-custom-silver font-bold flex flex-row gap-2 items-center justify-center text-center md:px-10 md:py-3">
           {turnText && (
-            <span className="font-bold w-full text-center text-sm md:text-xl">{turnText}</span>
+            <span className="font-bold w-full text-center text-s landmobileSS:text-base">
+              {turnText}
+            </span>
           )}
-          <span className="font-bold w-full text-center text-sm md:text-xl">
+          <span className="font-bold w-full text-center text-s landmobileSS:text-base">
             {currentStatusText}
           </span>
         </Card>
@@ -49,7 +51,7 @@ const GameHeader = () => {
           onClick={handleRestartModal}
           title="Restart game"
           type="basic"
-          className="px-6 py-3"
+          className="px-6 py-3 landmobileSS:px-3 landmobileSS:py-2"
         >
           <Restart />
         </CustomButton>
