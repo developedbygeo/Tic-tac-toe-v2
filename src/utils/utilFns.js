@@ -52,3 +52,15 @@ export const optimalPlay = (board, cpuMark) => {
   }
   return move;
 };
+
+export const gameStatusCommentary = (finalState, winner) => {
+  if (finalState && winner) return 'WON';
+  if (finalState && !winner) return 'TIE';
+  if (!finalState) return 'TURN';
+};
+
+export const turnOrWinner = (finalState, winner, turn) => {
+  if (finalState && winner) return winner;
+  if (finalState && !winner) return null;
+  if (!finalState) return turn;
+};
