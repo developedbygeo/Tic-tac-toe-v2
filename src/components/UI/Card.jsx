@@ -17,12 +17,12 @@ Card.defaultProps = {
 
 export const ScoreCard = ({ title, score, type, className }) => (
   <div
-    className={`text-center text-dark-navy rounded-lg w-11/12 h-15 px-2 py-1 md:px-6 md:py-3 ${
+    className={`text-center text-dark-navy rounded-lg w-11/12 h-15 px-2 py-1 md:px-6 md:py-3 landmobileSS:landscape-score-card  ${
       ScoreCardType[type]
     }  ${className || ''}`}
   >
-    <span className="text-base tracking-wide md:text-xl">{title}</span>
-    <p className="font-bold text-xl md:text-2xl">{score}</p>
+    <span className="text-base tracking-wide ">{title}</span>
+    <p className="font-bold text-s landmobileSS:text-base">{score}</p>
   </div>
 );
 
