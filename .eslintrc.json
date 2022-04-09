@@ -30,10 +30,8 @@
       }
     ],
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
-    "no-unused-vars": "warn",
-    "no-param-reassign": "off",
-    "react/jsx-no-bind": "off",
     "consistent-return": "off",
+    "no-param-reassign": "off",
     "react/jsx-filename-extension": "warn"
   }
 }
