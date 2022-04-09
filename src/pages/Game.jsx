@@ -12,7 +12,7 @@ const Game = () => {
   const { mark: mark2, id: id2 } = players.find((player) => player.mark === 'O');
 
   return (
-    <section className="h-5/6 mt-5 mb-auto w-11/12 flex flex-col justify-between md:justify-center md:w-9/12 md:m-auto md:gap-8 lg:h-5/6 lg:w-5/12 2xl:w-4/12 landmobileSS:landscape-game">
+    <section className="h-5/6 mt-5 mb-auto w-11/12 flex flex-col justify-between md:justify-center md:w-9/12 md:m-auto md:gap-8 lg:h-5/6 lg:max-w-lg sxl:max-w-2xl xl:max-w-xl 2xl:w-4/12 2xl:max-w-3xl landmobileSS:landscape-game fourK:max-w-7xl">
       <GameHeader />
       <GameBoard />
       <article className="w-full grid grid-cols-3 gap-2 place-items-center landmobileSS:landscape-score-cont">
