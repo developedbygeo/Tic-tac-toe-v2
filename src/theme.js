@@ -1,3 +1,6 @@
+import { css } from '@emotion/react';
+import { winnerColorLookup } from './utils/constants';
+
 export const ButtonType = {
   primary:
     'btn bg-light-yellow shadow-primaryButtonOne hover:bg-light-yellow-hover active:shadow-primaryButtonOneActive',
@@ -14,12 +17,29 @@ export const ScoreCardType = {
 };
 
 export const ButtonSize = {
-  lg: 'py-3 px-6 text-lg',
+  lg: 'py-3 px-6 text-lg md:text-xl',
   xl: 'px-8,  py-32'
 };
 
 export const ModalStyling = {
-  backdrop: 'fixed top-0 left-0 right-0 w-full h-full bg-black/30 z-20',
+  backdrop: 'fixed top-0 left-0 right-0 w-full h-full bg-black/50 z-20',
   overlay:
-    'fixed top-1/2 left-1/2 w-full h-2/5 -translate-x-1/2 -translate-y-1/2 z-30 bg-semi-dark-navy'
+    'fixed top-1/2 left-1/2 w-full h-2/5 -translate-x-1/2 -translate-y-1/2 z-30 bg-semi-dark-navy md:h-1/3 xl:h-2/5'
 };
+
+export const TicTacToeButtonStyling = (svg, isMarkPlaced, hasPlayerWon, winner) => css`
+  ${isMarkPlaced === true &&
+  `
+    transition: 50ms ease;
+    &:hover{
+    background-image: url(${svg});
+  }
+  `}
+  ${hasPlayerWon === true &&
+  `
+  background-color: ${winnerColorLookup[winner]};
+  svg{
+
+  }
+  `}
+`;
