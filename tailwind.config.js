@@ -15,6 +15,14 @@ module.exports = {
       'light-yellow-hover': '#FFC860',
       black: '#000000'
     },
+    fontSize: {
+      base: ['clamp(1rem, 0.9244rem + 0.4651vw, 1.5rem)', '1.5'],
+      s: ['clamp(1.25rem, 1.2122rem + 0.2326vw, 1.5rem)', '1.5'],
+      sm: ['clamp(1.35rem, 1.4244rem + 0.4651vw, 1.75rem)', '1.5'],
+      md: ['clamp(1.8rem, 1.7698rem + 0.1860vw, 2rem)', '1.5'],
+      lg: ['clamp(2rem, 1.9244rem + 0.4651vw, 2.5rem)', '1.5'],
+      xl: ['clamp(2.25rem, 2.1488rem + 0.4302vw, 3rem)', '1.5']
+    },
     extend: {
       fontFamily: {
         sans: ['Outfit', ...defaultTheme.fontFamily.sans]
@@ -27,6 +35,28 @@ module.exports = {
         secondaryButton: '0px 8px 0px 0px #6B8997',
         secondaryButtonActive: 'inset 0px 9px 14px 5px #6B8997',
         cardShadow: '0px 8px 0px 0px #10212A'
+      },
+      height: {
+        90: '90%',
+        95: '95%'
+      },
+      width: {
+        half: '50%'
+      },
+      screens: {
+        landmobileSS: {
+          raw: '(min-width: 319px) and (max-height: 450px) and (orientation: landscape)'
+        },
+        landmobileS: {
+          raw: '(min-width: 568px) and (max-height: 450px) and (orientation: landscape)'
+        },
+        landmobileSM: {
+          raw: '(min-width: 812px) and (max-height: 450px) and (orientation: landscape)'
+        },
+        landscapeL: {
+          raw: '(min-width: 925px) and (max-height: 450px) and (orientation: landscape)'
+        },
+        ...defaultTheme.screens
       }
     }
   },
