@@ -15,25 +15,25 @@ const GameRestartDialogue = ({ onDisable }) => {
 
   return (
     <article className="h-full w-full p-2 flex flex-col items-center justify-evenly ">
-      <h1 className="text-custom-silver text-xl tracking-wider font-bold md:text-2xl">
+      <h1 className="text-custom-silver text-lg tracking-wider font-bold lg:text-xl landmobileSS:text-s">
         RESTART GAME?
       </h1>
       <div className="flex flex-row gap-3">
         <CustomButton
           onClick={onDisable}
           title="Quit the game"
-          className="text-center py-2"
+          className="text-center py-2 landmobileSS:text-base"
           type="basic"
-          size="lg"
+          size="md"
         >
           NO, CANCEL
         </CustomButton>
         <CustomButton
           onClick={restartGameHandler}
           title="Restart round"
-          className="py-2"
+          className="py-2 landmobileSS:text-base"
           type="primary"
-          size="lg"
+          size="md"
         >
           YES, RESTART
         </CustomButton>
