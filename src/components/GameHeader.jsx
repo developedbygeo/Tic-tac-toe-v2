@@ -37,7 +37,7 @@ const GameHeader = () => {
         <Link to="/">
           <Logo />
         </Link>
-        <Card className="px-4 py-2 text-custom-silver font-bold flex flex-row gap-2 items-center justify-center text-center md:px-10 md:py-3">
+        <Card className="px-4 py-2 text-custom-silver font-bold flex flex-row gap-2 items-center justify-center text-center md:px-10 md:py-3 landmobileSS:px-4">
           {turnText && (
             <span className="font-bold w-full text-center text-s landmobileSS:text-base">
               {turnText}
