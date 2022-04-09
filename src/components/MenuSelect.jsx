@@ -11,7 +11,7 @@ const MenuSelect = ({ onMarkSelect, selected }) => {
           key={markObj.id}
           onClick={() => onMarkSelect(markObj.mark)}
           title={`Select ${markObj.mark}`}
-          className={`text-3xl font-bold py-2 px-1 rounded-md duration-75 ${
+          className={`text-sm font-bold py-2 px-1 rounded-md duration-75 landmobileSS:text-base ${
             selected === markObj.mark
               ? 'bg-custom-silver text-dark-navy'
               : 'text-custom-silver hover:bg-semi-dark-navy bg-opacity-25'
