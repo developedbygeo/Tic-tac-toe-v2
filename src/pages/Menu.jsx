@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { init } from '../features/game/gameSlice';
+import { init, quit } from '../features/game/gameSlice';
 
 import { ReactComponent as Logo } from '../assets/logo.svg';
 import { Card } from '../components/UI/Card';
@@ -26,6 +26,7 @@ const Menu = () => {
   };
 
   const startGameHandler = (mode = 'CPU') => {
+    dispatch(quit());
     dispatch(
       init({
         mode,
@@ -39,14 +40,14 @@ const Menu = () => {
   };
 
   return (
-    <section className="flex flex-col gap-5 justify-evenly items-center h-4/6  w-5/6h-4/6  w-5/6">
+    <section className="game-cont flex flex-col gap-5 justify-evenly items-center h-4/6 w-5/6 md:w-7/12 md:justify-center md:gap-8 xl:h-5/6 xl:w-5/12 2xl:w-4/12">
       <div className="py-2">
         <Logo />
       </div>
-      <Card className="h-3/6 w-full flex flex-col justify-between items-center py-4 text-custom-silver">
-        <h1 className="font-bold uppercase tracking-wider">pick player 1&apos;s mark</h1>
+      <Card className="h-3/6 w-full flex flex-col justify-between items-center py-4 text-custom-silver md:h-1/4 xl:h-2/6">
+        <h1 className="font-bold uppercase tracking-wider md:text-xl">pick player 1&apos;s mark</h1>
         <MenuSelect onMarkSelect={markSelectionHandler} selected={selectedMark} />
-        <h2 className="font-normal uppercase tracking-wide text-sm opacity-50">
+        <h2 className="font-normal uppercase tracking-wide text-sm opacity-50 md:text-lg">
           Remember: x goes first
         </h2>
       </Card>
