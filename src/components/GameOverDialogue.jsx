@@ -16,7 +16,7 @@ const winningTextColor = (winner) => css`
 
 const svgStyle = css`
   & > svg {
-    transform: scale(0.8);
+    transform: scale(0.7);
   }
 `;
 
@@ -44,15 +44,15 @@ const GameOverDialogue = ({ onDisable }) => {
   const tieText = finalState && !winner && 'ROUND TIED';
 
   return (
-    <article className="h-full w-full p-2 flex flex-col items-center justify-evenly ">
+    <article className="h-full w-full p-2 flex flex-col items-center justify-evenly md:justify-center md:gap-8">
       {winner && (
-        <h1 className="text-custom-silver text-xl tracking-wider font-bold">
+        <h1 className="text-custom-silver text-md tracking-wider font-bold">
           {mode === 'CPU' ? playerVersusCpuText : playerVersusPlayerText}
         </h1>
       )}
       <div className="flex flex-row items-center justify-center" css={svgStyle}>
         {winner && svgLookup[winner]}
-        <h2 className="text-2xl font-bold tracking-wider px-4" css={winningTextColor(winner)}>
+        <h2 className="text-xl font-bold tracking-wider px-4" css={winningTextColor(winner)}>
           {winText || tieText}
         </h2>
       </div>
