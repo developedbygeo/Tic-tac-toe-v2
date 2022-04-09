@@ -56,6 +56,15 @@ module.exports = {
         landscapeL: {
           raw: '(min-width: 925px) and (max-height: 450px) and (orientation: landscape)'
         },
+        sxl: {
+          raw: '(min-width: 1100px) and (max-width: 1279px)'
+        },
+        desktop: {
+          raw: '(min-width: 2560px)'
+        },
+        fourK: {
+          raw: '(min-width: 3840px)'
+        },
         ...defaultTheme.screens
       }
     }
