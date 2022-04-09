@@ -2,31 +2,13 @@
 /** @jsxImportSource @emotion/react */
 
 import { useSelector } from 'react-redux';
-import { css } from '@emotion/react';
 
 import useMinmax from '../hooks/useMinmax';
 import usePlayer from '../hooks/usePlayer';
 
 import { TicButton } from './UI/Buttons';
-
-import { svgLookup, svgWinLookup, winnerColorLookup } from '../utils/constants';
-
-const style = (svg, isMarkPlaced, hasPlayerWon, winner) => css`
-  ${isMarkPlaced === true &&
-  `
-    transition: 50ms ease;
-    &:hover{
-    background-image: url(${svg});
-  }
-  `}
-  ${hasPlayerWon === true &&
-  `
-  background-color: ${winnerColorLookup[winner]};
-  svg{
-
-  }
-  `}
-`;
+import { svgLookup, svgWinLookup } from '../utils/constants';
+import { TicTacToeButtonStyling } from '../theme';
 
 const GameBoard = () => {
   const { board, mode, winner, currentWinningCoords } = useSelector((state) => state.game);
@@ -42,8 +24,8 @@ const GameBoard = () => {
           <TicButton
             key={index}
             onMove={() => playerMoveHandler(index)}
-            className="w-full h-full cursor-pointer bg-contain bg-no-repeat bg-center flex items-center justify-center"
-            css={style(hoverMark, !card, isWinningCoord, winner)}
+            className="w-full h-full cursor-pointer bg-contain bg-no-repeat bg-center flex items-center justify-center md:bg-auto"
+            css={TicTacToeButtonStyling(hoverMark, !card, isWinningCoord, winner)}
           >
             {isWinningCoord ? svgWinLookup[card] : svgLookup[card]}
           </TicButton>
