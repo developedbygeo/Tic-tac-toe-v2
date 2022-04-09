@@ -18,10 +18,10 @@
     @apply w-screen gap-1 h-95 my-auto;
   }
   .landscape-game {
-    @apply landmobileSS:h-95 landmobileSS:my-auto landmobileSS:justify-around;
+    @apply h-95 w-[90%] my-auto justify-around;
   }
   .landscape-gameboard {
-    @apply self-end gap-3 h-[70%] w-3/5;
+    @apply self-end gap-3 h-[70%] w-3/5 max-w-md;
   }
   .landscape-score-cont {
     @apply absolute flex flex-col justify-between w-2/6 h-2/4 bottom-[10%] left-[3%];
