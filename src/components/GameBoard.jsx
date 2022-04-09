@@ -17,7 +17,7 @@ const GameBoard = () => {
   const hoverMark = mode === 'CPU' ? hoverMarkCPU : currentHover;
 
   return (
-    <div className="h-3/5 grid grid-cols-3 grid-rows-3 place-items-center gap-6">
+    <div className="h-3/5 grid grid-cols-3 grid-rows-3 place-items-center gap-6 landmobileSS:landscape-gameboard">
       {board.map((card, index) => {
         const isWinningCoord = currentWinningCoords && currentWinningCoords.includes(index);
         return (
