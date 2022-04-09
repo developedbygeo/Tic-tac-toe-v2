@@ -17,14 +17,15 @@ export const ScoreCardType = {
 };
 
 export const ButtonSize = {
-  lg: 'py-3 px-6 text-lg md:text-xl',
+  md: 'py-3 px-4 text-base 2xl:text-sm landmobileSS:text-base landmobileSS:py-2 landMobileSS:px-2',
+  lg: 'py-3 px-6 text-base 2xl:text-sm landmobileSS:text-base landmobileSS:py-2 landMobileSS:px-2',
   xl: 'px-8,  py-32'
 };
 
 export const ModalStyling = {
   backdrop: 'fixed top-0 left-0 right-0 w-full h-full bg-black/50 z-20',
   overlay:
-    'fixed top-1/2 left-1/2 w-full h-2/5 -translate-x-1/2 -translate-y-1/2 z-30 bg-semi-dark-navy md:h-1/3 xl:h-2/5'
+    'fixed top-1/2 left-1/2 w-full h-2/5 -translate-x-1/2 -translate-y-1/2 z-30 bg-semi-dark-navy md:h-1/3 xl:h-2/5 landmobileSS:h-2/3'
 };
 
 export const TicTacToeButtonStyling = (svg, isMarkPlaced, hasPlayerWon, winner) => css`
