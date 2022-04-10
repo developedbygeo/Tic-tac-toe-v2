@@ -51,7 +51,7 @@ const GameHeader = () => {
           onClick={handleRestartModal}
           title="Restart game"
           type="basic"
-          className="px-6 py-3 landmobileSS:px-3 landmobileSS:py-2"
+          className="px-6 py-3 rounded-lg landmobileSS:px-3 landmobileSS:py-2"
         >
           <Restart />
         </CustomButton>
