@@ -9,10 +9,10 @@
 
 @layer components {
   .btn {
-    @apply text-center text-dark-navy tracking-wide font-bold rounded-lg transition ease-in-out delay-100;
+    @apply text-center text-dark-navy tracking-wide font-bold rounded-2xl transition ease-in-out delay-100;
   }
   .custom-card {
-    @apply text-center rounded-lg bg-semi-dark-navy shadow-cardShadow;
+    @apply text-center rounded-xl bg-semi-dark-navy shadow-cardShadow;
   }
   .landscape-menu {
     @apply w-screen gap-1 h-95 my-auto;
