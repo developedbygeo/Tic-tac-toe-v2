@@ -18,7 +18,7 @@ module.exports = {
     fontSize: {
       base: ['clamp(1rem, 0.9244rem + 0.4651vw, 1.5rem)', '1.5'],
       s: ['clamp(1.25rem, 1.2122rem + 0.2326vw, 1.5rem)', '1.5'],
-      sm: ['clamp(1.35rem, 1.4244rem + 0.4651vw, 1.75rem)', '1.5'],
+      sm: ['clamp(1.25rem, 1.2rem + 0.4651vw, 1.55rem)', '1.5'],
       md: ['clamp(1.8rem, 1.7698rem + 0.1860vw, 2rem)', '1.5'],
       lg: ['clamp(2rem, 1.9244rem + 0.4651vw, 2.5rem)', '1.5'],
       xl: ['clamp(2.25rem, 2.1488rem + 0.4302vw, 3rem)', '1.5']
@@ -55,6 +55,9 @@ module.exports = {
         },
         landscapeL: {
           raw: '(min-width: 925px) and (max-height: 450px) and (orientation: landscape)'
+        },
+        landscapeLargeTablet: {
+          raw: '(min-width: 800px) and (max-height: 1279px) and (min-height: 500px) and (max-height: 600px) and (orientation: landscape)'
         },
         sxl: {
           raw: '(min-width: 1100px) and (max-width: 1279px)'
