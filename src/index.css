@@ -7,6 +7,11 @@
   width: 100vw;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 @layer components {
   .btn {
     @apply text-center text-dark-navy tracking-wide font-bold rounded-2xl transition ease-in-out delay-100;
