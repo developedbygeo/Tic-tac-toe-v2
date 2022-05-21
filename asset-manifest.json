@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Tic-tac-toe-v2/static/css/main.0c8b5c4a.css",
+    "main.css": "/Tic-tac-toe-v2/static/css/main.de327c33.css",
     "main.js": "/Tic-tac-toe-v2/static/js/main.abfcecde.js",
     "index.html": "/Tic-tac-toe-v2/index.html",
     "static/media/icon-x-outline.svg": "/Tic-tac-toe-v2/static/media/icon-x-outline.a591bdf22fd3be0addcb328bb85f4766.svg",
@@ -9,11 +9,11 @@
     "static/media/icon-x.svg": "/Tic-tac-toe-v2/static/media/icon-x.8bf458bc3b7ac8faaf8536a53fc8e469.svg",
     "static/media/icon-o-outline.svg": "/Tic-tac-toe-v2/static/media/icon-o-outline.44ebb2196ec7043f1e17c46090539957.svg",
     "static/media/icon-o.svg": "/Tic-tac-toe-v2/static/media/icon-o.44678c794b80f1cafa42048754bf0abd.svg",
-    "main.0c8b5c4a.css.map": "/Tic-tac-toe-v2/static/css/main.0c8b5c4a.css.map",
+    "main.de327c33.css.map": "/Tic-tac-toe-v2/static/css/main.de327c33.css.map",
     "main.abfcecde.js.map": "/Tic-tac-toe-v2/static/js/main.abfcecde.js.map"
   },
   "entrypoints": [
-    "static/css/main.0c8b5c4a.css",
+    "static/css/main.de327c33.css",
     "static/js/main.abfcecde.js"
   ]
 }
